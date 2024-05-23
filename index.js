@@ -8,18 +8,18 @@ const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser')
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+require("dotenv").config();
 
-
-const genAI = new GoogleGenerativeAI('AIzaSyCSP8gP03L - E7VcsZt7bm2sRI9gjX5Cz14');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
 
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT;
 
 const upload = multer({ dest: 'uploads/' });
 
 // Connect to MongoDB
-const uri = "mongodb+srv://capzoidservice:cWWKrqhLAY7EhFLK@cluster0.lbk3h5e.mongodb.net/?retryWrites=true&w=majority&appName=cluster0";
+const uri = process.env.MONGO_URI
 // const uri = 'mongodb://localhost:27017/pdfDB';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
