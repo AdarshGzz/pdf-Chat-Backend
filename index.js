@@ -110,7 +110,12 @@ const port = process.env.PORT || 3001; // Default port if not provided in enviro
 
 const genAI = new (require('@google/generative-ai').GoogleGenerativeAI)(process.env.GEMINI_KEY);
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+const corsOptions = {
+    origin: 'https://pdfai-beta.vercel.app', // Update with your client URL
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
