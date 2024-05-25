@@ -36,7 +36,7 @@ This repository provides an API for uploading PDF documents, extracting their te
 
 4. Start the server:
     ```sh
-    npm start
+    node index.js
     ```
 
 The server will start running at `http://localhost:3001`.
